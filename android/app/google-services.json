@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "457399672438",
+    "project_id": "cineve-f8706",
+    "storage_bucket": "cineve-f8706.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457399672438:android:86a0ad9672986f2bd48957",
+        "android_client_info": {
+          "package_name": "com.usrideshare.cinesmaracaibo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVQR6sPscp-cOsfd1WMVHOm16GS85du0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
