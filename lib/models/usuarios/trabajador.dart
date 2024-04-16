@@ -11,7 +11,6 @@ class Trabajador {
   String apellido;
   String ci;
   bool admin;
-  String token;
   String correo;
 
   Trabajador({
@@ -20,7 +19,6 @@ class Trabajador {
     this.apellido = "",
     this.ci = "",
     this.admin = false,
-    this.token = "",
     this.correo = "",
   });
 
@@ -30,7 +28,6 @@ class Trabajador {
         apellido: json["apellido"],
         ci: json["ci"],
         admin: json["admin"],
-        token: json["token"],
         correo: json["correo"],
       );
 
@@ -40,7 +37,6 @@ class Trabajador {
         "apellido": apellido,
         "ci": ci,
         "admin": admin,
-        "token": token,
         "correo": correo,
       };
 }

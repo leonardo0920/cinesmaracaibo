@@ -1,6 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:cinesmaracaibo/models/auth/auth.dart';
+import 'package:cinesmaracaibo/models/provider/trabajador_provider.dart';
+import 'package:cinesmaracaibo/models/usuarios/trabajador.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +16,7 @@ class LoginController {
   String? password;
 
   late AuthAppProvider _authAppProvider;
-  // late WorkerProvider _workerProvider;
+  late TrabajadorProvider _trabajadorProvider;
 
   final user = FirebaseAuth.instance;
 
@@ -29,7 +31,7 @@ class LoginController {
     this.refresh = refresh;
 
     _authAppProvider = AuthAppProvider();
-    // _workerProvider = WorkerProvider();
+    _trabajadorProvider = TrabajadorProvider();
 
     refresh();
   }
@@ -44,18 +46,18 @@ class LoginController {
       bool isLogin = await _authAppProvider.login(email, password);
       if (isLogin) {
         if (user.currentUser != null) {
-          // Worker? worker =
-          //     await _workerProvider.getById(_authAppProvider.getUser()!.uid);
-          // if (worker != null) {
-          //   Navigator.pushNamed(context, HomePage.routeName);
-          //   ScaffoldMessenger.of(context).showSnackBar(
-          //     const SnackBar(
-          //       content: Text("The user is logged"),
-          //       backgroundColor: Color(0xFF36499B),
-          //       elevation: 10,
-          //     ),
-          //   );
-          // }
+          Trabajador? trabajador = await _trabajadorProvider
+              .getById(_authAppProvider.getUser()!.uid);
+          if (trabajador != null) {
+            Navigator.pushNamed(context, HomePage.routeName);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("The user is logged"),
+                backgroundColor: Color(0xFF36499B),
+                elevation: 10,
+              ),
+            );
+          }
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(

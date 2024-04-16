@@ -1,9 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:cinesmaracaibo/screen/home/empleados_page.dart';
+import 'package:cinesmaracaibo/screen/home/cartelera_page.dart';
+import 'package:cinesmaracaibo/screen/home/peliculas_page.dart';
+import 'package:cinesmaracaibo/screen/home/salas_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-import '../../constantes.dart';
 import 'controller/home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,6 +20,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final HomeController _con = HomeController();
 
+  int _currentIndex = 0;
+
   @override
   void initState() {
     super.initState();
@@ -24,12 +29,6 @@ class _HomePageState extends State<HomePage> {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _con.init(context, refresh);
     });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _con.dispose();
   }
 
   @override
@@ -52,68 +51,58 @@ class _HomePageState extends State<HomePage> {
         ),
         centerTitle: true,
       ),
-      body: Stack(
-        children: [
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: SizedBox.expand(
-              child: DraggableScrollableSheet(
-                initialChildSize: 0.98,
-                minChildSize: 0.98,
-                maxChildSize: 0.98,
-                builder: (context, scrollController) {
-                  return DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[900],
-                      borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(20),
-                      ),
-                    ),
-                    child: SingleChildScrollView(
-                      controller: scrollController,
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(50, 30, 50, 0),
-                        child: Center(
-                          child: Column(
-                            children: [
-                              Text(
-                                _con.trabajador?.nombre ?? 'Nombre',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              pelicula(
-                                'Spiderman',
-                                'Accion',
-                                '120 Min',
-                                'https://hips.hearstapps.com/hmg-prod/images/spider-man-across-the-spider-verse-part-one-524691364-large-1657880878.jpg',
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.grey[350],
+        onDestinationSelected: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        indicatorColor: Colors.grey[500],
+        selectedIndex: _currentIndex,
+        destinations: <Widget>[
+          NavigationDestination(
+            icon: const Icon(Icons.workspaces_outlined),
+            label: 'Cartelera',
+            selectedIcon: Icon(
+              Icons.workspaces_rounded,
+              color: Colors.grey[800],
+            ),
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.access_time_rounded),
+            label: 'Horarios',
+            selectedIcon: Icon(
+              Icons.access_time_filled_rounded,
+              color: Colors.grey[800],
+            ),
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.add_photo_alternate_outlined),
+            label: 'Peliculas',
+            selectedIcon: Icon(
+              Icons.add_photo_alternate_rounded,
+              color: Colors.grey[800],
+            ),
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.account_circle_outlined),
+            label: 'Empleado',
+            selectedIcon: Icon(
+              Icons.account_circle_rounded,
+              color: Colors.grey[800],
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget pelicula(String nombre, String genero, String duracion, String img) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        height: 90,
-        margin: const EdgeInsets.all(5),
-        padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
-        decoration: BoxDecoration(
-          color: const Color(0xFFF5F5F5),
-          borderRadius: BorderRadius.circular(10),
-        ),
+      body: IndexedStack(
+        index: _currentIndex,
+        children: const <Widget>[
+          CarteleraPage(),
+          SalasPage(),
+          PeliculasPage(),
+          EmpleadosPage(),
+        ],
       ),
     );
   }

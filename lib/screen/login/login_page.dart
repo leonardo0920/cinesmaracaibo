@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-import '../../constantes.dart';
 import '../../size_config.dart';
 import 'controller/login_controller.dart';
 
@@ -36,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
           color: Colors.white,
         ),
         title: const Text(
-          'Inicio de Seson',
+          'Inicio de Sesion',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w700,
@@ -50,9 +49,9 @@ class _LoginPageState extends State<LoginPage> {
             alignment: Alignment.bottomCenter,
             child: SizedBox.expand(
               child: DraggableScrollableSheet(
-                initialChildSize: 0.98,
-                minChildSize: 0.98,
-                maxChildSize: 0.98,
+                initialChildSize: 1,
+                minChildSize: 1,
+                maxChildSize: 1,
                 builder: (context, scrollController) {
                   return DecoratedBox(
                     decoration: BoxDecoration(
@@ -67,6 +66,13 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsets.fromLTRB(50, 30, 50, 0),
                         child: Column(
                           children: [
+                            SizedBox(
+                              width: 280,
+                              height: 280,
+                              child: Image.asset(
+                                'assets/image/Logo-removebg.png',
+                              ),
+                            ),
                             const Text(
                               '¡Bienvenido/a!',
                               style: TextStyle(
@@ -101,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
             buildEmailFormField(),
             const SizedBox(height: 15),
             buildPasswordFormField(),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.50),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.15),
             GestureDetector(
               onTap: () {
                 _con.login();
@@ -111,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: verde,
+                  color: Color(0xFF006D85),
                 ),
                 child: const Center(
                   child: Text(

@@ -1,21 +1,21 @@
 // ignore_for_file: empty_catches
 
-import 'package:cinesmaracaibo/models/usuarios/trabajador.dart';
+import 'package:cinesmaracaibo/models/usuarios/peliculas.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class TrabajadorProvider {
+class PeliculaProvider {
   late CollectionReference _ref;
 
-  TrabajadorProvider() {
-    _ref = FirebaseFirestore.instance.collection('trabajadores');
+  PeliculaProvider() {
+    _ref = FirebaseFirestore.instance.collection('peliculas');
   }
 
-  Future<String?> create(Trabajador trabajador) async {
+  Future<String?> create(Peliculas pelicula) async {
     try {
       String id = _ref.doc().id;
-      trabajador.id = id;
+      pelicula.id = id;
 
-      await _ref.doc(trabajador.id).set(trabajador.toJson());
+      await _ref.doc(pelicula.id).set(pelicula.toJson());
       return id;
     } catch (error) {}
     return null;
@@ -25,12 +25,12 @@ class TrabajadorProvider {
     return _ref.doc(id).snapshots(includeMetadataChanges: true);
   }
 
-  Future<Trabajador?> getById(String id) async {
+  Future<Peliculas?> getById(String id) async {
     DocumentSnapshot document = await _ref.doc(id).get();
 
     if (document.exists) {
-      Trabajador trabajador =
-          Trabajador.fromJson(document.data() as Map<String, dynamic>);
+      Peliculas trabajador =
+          Peliculas.fromJson(document.data() as Map<String, dynamic>);
       return trabajador;
     }
     return null;

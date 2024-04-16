@@ -14,7 +14,7 @@ InputDecorationTheme inputDecorationTheme() {
   OutlineInputBorder outlineInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(15.0),
     borderSide: const BorderSide(
-      color: Color(0xFF8EABAF),
+      color: Colors.white,
     ),
     gapPadding: 5,
   );
@@ -31,7 +31,9 @@ AppBarTheme appBarTheme() {
   return const AppBarTheme(
     color: Colors.white,
     elevation: 0,
-    iconTheme: IconThemeData(color: Colors.black),
+    iconTheme: IconThemeData(
+      color: Colors.white,
+    ),
     centerTitle: false,
   );
 }
