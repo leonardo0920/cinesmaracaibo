@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
+import '../../size_config.dart';
+import '../peliculas/nuevo_pelicula_page.dart';
 import 'controller/home_controller.dart';
 
 class PeliculasPage extends StatefulWidget {
@@ -13,6 +15,7 @@ class PeliculasPage extends StatefulWidget {
 
 class _PeliculasPageState extends State<PeliculasPage> {
   final HomeController _con = HomeController();
+
   @override
   void initState() {
     super.initState();
@@ -47,21 +50,46 @@ class _PeliculasPageState extends State<PeliculasPage> {
                     child: SingleChildScrollView(
                       controller: scrollController,
                       child: Container(
-                        padding: const EdgeInsets.fromLTRB(50, 30, 50, 0),
+                        padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
                         child: Center(
                           child: Column(
                             children: [
-                              const Text(
-                                'Peliculas',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w800,
-                                ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text(
+                                    'Peliculas',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, NuevaPeliculaPage.routeName);
+                                    },
+                                    child: Container(
+                                      width: 35,
+                                      height: 35,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: const Icon(
+                                        Icons.add,
+                                        size: 20,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                               Container(
                                 width: double.infinity,
-                                height: 800,
+                                height: SizeConfig.screenHeight * 0.73,
                                 padding:
                                     const EdgeInsets.fromLTRB(10, 20, 10, 20),
                                 child: FutureBuilder(
@@ -115,10 +143,12 @@ class _PeliculasPageState extends State<PeliculasPage> {
     String idioma,
   ) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        _con.goToDetallePelicula(id);
+      },
       child: Container(
         width: double.infinity,
-        height: 500,
+        height: 450,
         padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(

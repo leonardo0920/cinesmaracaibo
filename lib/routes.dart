@@ -9,6 +9,9 @@ import 'package:cinesmaracaibo/screen/home/home_page.dart';
 import 'package:cinesmaracaibo/screen/home/peliculas_page.dart';
 import 'package:cinesmaracaibo/screen/home/salas_page.dart';
 import 'package:cinesmaracaibo/screen/login/login_page.dart';
+import 'package:cinesmaracaibo/screen/peliculas/detalle_peliculas_page.dart';
+import 'package:cinesmaracaibo/screen/peliculas/edit_pelicula_page.dart';
+import 'package:cinesmaracaibo/screen/peliculas/nuevo_pelicula_page.dart';
 import 'package:flutter/material.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -23,4 +26,7 @@ final Map<String, WidgetBuilder> routes = {
   EmpleadoEditPage.routeName: (context) => const EmpleadoEditPage(),
   EmpleadosListaPage.routeName: (context) => const EmpleadosListaPage(),
   NuevoEmpleadoPage.routeName: (context) => const NuevoEmpleadoPage(),
+  DetallePeliculaPage.routeName: (context) => const DetallePeliculaPage(),
+  PeliculaEditPage.routeName: (context) => const PeliculaEditPage(),
+  NuevaPeliculaPage.routeName: (context) => const NuevaPeliculaPage(),
 };

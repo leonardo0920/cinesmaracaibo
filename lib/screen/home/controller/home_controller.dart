@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import '../../../models/usuarios/trabajador.dart';
 import '../../login/login_page.dart';
+import '../../peliculas/detalle_peliculas_page.dart';
 
 class HomeController {
   late BuildContext context;
@@ -38,6 +39,10 @@ class HomeController {
     trabajador =
         await _trabajadorProvider.getById(_authAppProvider.getUser()!.uid);
     refresh();
+  }
+
+  void goToDetallePelicula(String id) {
+    Navigator.pushNamed(context, DetallePeliculaPage.routeName, arguments: id);
   }
 
   Future<List> carteleraGetAll() async {

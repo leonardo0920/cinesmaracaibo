@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-import 'controller/nuevo_empleado_controller.dart';
+import 'controller/nuevo_pelicula_controller.dart';
 
-class NuevoEmpleadoPage extends StatefulWidget {
-  static String routeName = "/nuevo_empleado_page";
-  const NuevoEmpleadoPage({super.key});
+class NuevaPeliculaPage extends StatefulWidget {
+  static String routeName = "/nueva_pelicula_page";
+  const NuevaPeliculaPage({super.key});
   @override
-  State<NuevoEmpleadoPage> createState() => _NuevoEmpleadoPageState();
+  State<NuevaPeliculaPage> createState() => _NuevaPeliculaPageState();
 }
 
-class _NuevoEmpleadoPageState extends State<NuevoEmpleadoPage> {
-  final NuevoEmpleadoController _con = NuevoEmpleadoController();
+class _NuevaPeliculaPageState extends State<NuevaPeliculaPage> {
+  final NuevaPeliculaController _con = NuevaPeliculaController();
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _NuevoEmpleadoPageState extends State<NuevoEmpleadoPage> {
           color: Colors.white,
         ),
         title: const Text(
-          'Empleados',
+          'Agregar Pelicula',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w700,
@@ -52,28 +52,23 @@ class _NuevoEmpleadoPageState extends State<NuevoEmpleadoPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Formulario de Empleado',
+                'Formulario Pelicula',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              const Text(
-                'Informacion personal y bancarios del empleado',
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
               const SizedBox(height: 8),
               buildNombresFormField(),
               const SizedBox(height: 8),
-              buildApellidosFormField(),
+              buildDuracionFormField(),
               const SizedBox(height: 8),
-              buildCedulaFormField(),
+              buildIdiomaFormField(),
               const SizedBox(height: 8),
-              buildCorreoFormField(),
+              buildSalaFormField(),
+              const SizedBox(height: 8),
+              buildCarteleraFormField(),
               const SizedBox(height: 30),
               SizedBox(
                 width: double.infinity,
@@ -91,7 +86,7 @@ class _NuevoEmpleadoPageState extends State<NuevoEmpleadoPage> {
                         ),
                         child: const Center(
                           child: Text(
-                            'Crear Empleado',
+                            'Agregar Pelicula',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
@@ -115,7 +110,7 @@ class _NuevoEmpleadoPageState extends State<NuevoEmpleadoPage> {
     return TextFormField(
       controller: _con.nombreController,
       decoration: const InputDecoration(
-        hintText: "Primer y Segundo Nombre",
+        hintText: "Nombre de la Pelicula",
         hintStyle: TextStyle(
           fontSize: 13.0,
           fontWeight: FontWeight.w300,
@@ -131,11 +126,11 @@ class _NuevoEmpleadoPageState extends State<NuevoEmpleadoPage> {
     );
   }
 
-  TextFormField buildApellidosFormField() {
+  TextFormField buildDuracionFormField() {
     return TextFormField(
-      controller: _con.apellidoController,
+      controller: _con.duracionController,
       decoration: const InputDecoration(
-        hintText: "Primer y Segundo Apellido",
+        hintText: "Duracion de la pelicula",
         hintStyle: TextStyle(
           fontSize: 13.0,
           fontWeight: FontWeight.w300,
@@ -151,11 +146,11 @@ class _NuevoEmpleadoPageState extends State<NuevoEmpleadoPage> {
     );
   }
 
-  TextFormField buildCedulaFormField() {
+  TextFormField buildIdiomaFormField() {
     return TextFormField(
-      controller: _con.cedulaController,
+      controller: _con.idiomaController,
       decoration: const InputDecoration(
-        hintText: "Cedula",
+        hintText: "Idioma",
         hintStyle: TextStyle(
           fontSize: 13.0,
           fontWeight: FontWeight.w300,
@@ -171,11 +166,51 @@ class _NuevoEmpleadoPageState extends State<NuevoEmpleadoPage> {
     );
   }
 
-  TextFormField buildCorreoFormField() {
+  TextFormField buildSalaFormField() {
     return TextFormField(
-      controller: _con.correoController,
+      controller: _con.salaController,
       decoration: const InputDecoration(
-        hintText: "Correo Electronico",
+        hintText: "Sala",
+        hintStyle: TextStyle(
+          fontSize: 13.0,
+          fontWeight: FontWeight.w300,
+          color: Colors.white,
+        ),
+        contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      ),
+      style: const TextStyle(
+        fontSize: 13.0,
+        fontWeight: FontWeight.w300,
+        color: Colors.white,
+      ),
+    );
+  }
+
+  TextFormField buildGeneroFormField() {
+    return TextFormField(
+      controller: _con.generoController,
+      decoration: const InputDecoration(
+        hintText: "Link de la Imagen",
+        hintStyle: TextStyle(
+          fontSize: 13.0,
+          fontWeight: FontWeight.w300,
+          color: Colors.white,
+        ),
+        contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      ),
+      style: const TextStyle(
+        fontSize: 13.0,
+        fontWeight: FontWeight.w300,
+        color: Colors.white,
+      ),
+    );
+  }
+
+  TextFormField buildCarteleraFormField() {
+    return TextFormField(
+      controller: _con.carteleraController,
+      decoration: const InputDecoration(
+        hintText: "Link de la Imagen",
         hintStyle: TextStyle(
           fontSize: 13.0,
           fontWeight: FontWeight.w300,
