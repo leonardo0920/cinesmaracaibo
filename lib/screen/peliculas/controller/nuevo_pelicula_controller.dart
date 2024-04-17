@@ -56,7 +56,7 @@ class NuevaPeliculaController {
         ),
       );
 
-      Future.delayed(Duration(seconds: 1), () {
+      Future.delayed(const Duration(seconds: 1), () {
         Navigator.pop(context);
         refresh();
       });

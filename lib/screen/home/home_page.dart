@@ -55,6 +55,7 @@ class _HomePageState extends State<HomePage> {
             onTap: () {
               setState(() {
                 _con.refresh();
+                // ignore: avoid_print
                 print('Recarga');
               });
             },

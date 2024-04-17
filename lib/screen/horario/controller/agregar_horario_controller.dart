@@ -97,7 +97,7 @@ class AgregarHorarioController {
         ),
       );
       Future.delayed(
-        Duration(seconds: 2),
+        const Duration(seconds: 2),
         () {
           Navigator.pop(context);
         },

@@ -187,7 +187,7 @@ class _CarteleraPageState extends State<CarteleraPage> {
                         fontWeight: FontWeight.w800,
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: 90,
                       child: Text(
                         'Idioma: $idioma',
