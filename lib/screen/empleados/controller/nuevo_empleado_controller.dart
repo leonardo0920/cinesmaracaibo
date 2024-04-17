@@ -37,7 +37,7 @@ class NuevoEmpleadoController {
         nombre: nombreController.text,
         apellido: apellidoController.text,
         ci: cedulaController.text,
-        correo: cedulaController.text,
+        correo: correoController.text,
       );
 
       await _trabajadorProvider.create(data);
@@ -50,7 +50,7 @@ class NuevoEmpleadoController {
         ),
       );
 
-      Future.delayed(Duration(seconds: 1), () {
+      Future.delayed(const Duration(seconds: 1), () {
         Navigator.pop(context);
         refresh();
       });

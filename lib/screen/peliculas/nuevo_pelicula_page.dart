@@ -68,6 +68,8 @@ class _NuevaPeliculaPageState extends State<NuevaPeliculaPage> {
               const SizedBox(height: 8),
               buildSalaFormField(),
               const SizedBox(height: 8),
+              buildGeneroFormField(),
+              const SizedBox(height: 8),
               buildCarteleraFormField(),
               const SizedBox(height: 30),
               SizedBox(
@@ -190,7 +192,7 @@ class _NuevaPeliculaPageState extends State<NuevaPeliculaPage> {
     return TextFormField(
       controller: _con.generoController,
       decoration: const InputDecoration(
-        hintText: "Link de la Imagen",
+        hintText: "Genero de la Pelicula",
         hintStyle: TextStyle(
           fontSize: 13.0,
           fontWeight: FontWeight.w300,

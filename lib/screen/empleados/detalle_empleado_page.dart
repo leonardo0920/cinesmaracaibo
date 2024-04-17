@@ -85,7 +85,7 @@ class _DetalleEmpleadoPageState extends State<DetalleEmpleadoPage> {
                       ),
                     )
                   : const Text(
-                      'Empelados',
+                      'Empleados',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,

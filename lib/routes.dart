@@ -8,6 +8,7 @@ import 'package:cinesmaracaibo/screen/home/empleados_page.dart';
 import 'package:cinesmaracaibo/screen/home/home_page.dart';
 import 'package:cinesmaracaibo/screen/home/peliculas_page.dart';
 import 'package:cinesmaracaibo/screen/home/salas_page.dart';
+import 'package:cinesmaracaibo/screen/horario/agregar_horario_page.dart';
 import 'package:cinesmaracaibo/screen/login/login_page.dart';
 import 'package:cinesmaracaibo/screen/peliculas/detalle_peliculas_page.dart';
 import 'package:cinesmaracaibo/screen/peliculas/edit_pelicula_page.dart';
@@ -29,4 +30,5 @@ final Map<String, WidgetBuilder> routes = {
   DetallePeliculaPage.routeName: (context) => const DetallePeliculaPage(),
   PeliculaEditPage.routeName: (context) => const PeliculaEditPage(),
   NuevaPeliculaPage.routeName: (context) => const NuevaPeliculaPage(),
+  AgregarHorarioPage.routeName: (context) => const AgregarHorarioPage()
 };

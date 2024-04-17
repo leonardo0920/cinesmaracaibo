@@ -54,7 +54,7 @@ class _CarteleraPageState extends State<CarteleraPage> {
                     child: SingleChildScrollView(
                       controller: scrollController,
                       child: Container(
-                        padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                         child: Center(
                           child: Column(
                             children: [
@@ -187,11 +187,14 @@ class _CarteleraPageState extends State<CarteleraPage> {
                         fontWeight: FontWeight.w800,
                       ),
                     ),
-                    Text(
-                      'Idioma: $idioma',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
+                    Container(
+                      width: 90,
+                      child: Text(
+                        'Idioma: $idioma',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
                     ),
                   ],

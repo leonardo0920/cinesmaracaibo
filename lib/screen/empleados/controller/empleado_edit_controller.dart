@@ -11,9 +11,9 @@ class EmpleadosEditController {
   late Function refresh;
 
   late TrabajadorProvider _trabajadorProvider;
-  Trabajador? worker;
+  Trabajador? trabajador;
 
-  late String idWorker;
+  late String idTrabajador;
 
   String? nombre;
   String? apellido;
@@ -34,7 +34,7 @@ class EmpleadosEditController {
 
     _trabajadorProvider = TrabajadorProvider();
 
-    idWorker = ModalRoute.of(context)!.settings.arguments as String;
+    idTrabajador = ModalRoute.of(context)!.settings.arguments as String;
 
     getWorkerInfo();
     refresh();
@@ -42,10 +42,11 @@ class EmpleadosEditController {
 
   void getWorkerInfo() async {
     Stream<DocumentSnapshot> userStream =
-        _trabajadorProvider.getByIdStream(idWorker);
+        _trabajadorProvider.getByIdStream(idTrabajador);
     userStream.listen(
       (DocumentSnapshot document) {
-        worker = Trabajador.fromJson(document.data() as Map<String, dynamic>);
+        trabajador =
+            Trabajador.fromJson(document.data() as Map<String, dynamic>);
         refresh();
       },
     );
@@ -56,25 +57,25 @@ class EmpleadosEditController {
     if (nombreController.text != '') {
       nombre = nombreController.text;
     } else {
-      nombre = worker!.nombre;
+      nombre = trabajador!.nombre;
     }
 
     if (apellidoController.text != '') {
       apellido = apellidoController.text;
     } else {
-      apellido = worker!.apellido;
+      apellido = trabajador!.apellido;
     }
 
     if (cedulaController.text != '') {
       cedula = cedulaController.text;
     } else {
-      cedula = worker!.ci;
+      cedula = trabajador!.ci;
     }
 
     if (correoController.text != '') {
       correo = correoController.text;
     } else {
-      correo = worker!.correo;
+      correo = trabajador!.correo;
     }
     Map<String, dynamic> data = {
       'nombre': nombre,

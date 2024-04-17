@@ -50,6 +50,20 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         centerTitle: true,
+        actions: [
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _con.refresh();
+                print('Recarga');
+              });
+            },
+            child: const Icon(
+              Icons.replay_outlined,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.grey[350],

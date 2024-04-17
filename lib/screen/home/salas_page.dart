@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
+import '../../size_config.dart';
 import 'controller/home_controller.dart';
 
 class SalasPage extends StatefulWidget {
@@ -38,206 +39,154 @@ class _SalasPageState extends State<SalasPage> {
                 maxChildSize: 1,
                 builder: (context, scrollController) {
                   return DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[900],
-                      borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(20),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[900],
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
                       ),
-                    ),
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
-                      child: const Center(
-                        child: Column(
-                          children: [
-                            Text(
-                              'Horarios',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: SingleChildScrollView(
+                        controller: scrollController,
+                        child: Container(
+                          padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                          child: Center(
+                            child: Column(
                               children: [
-                                Column(
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      'Pelicula',
+                                    const Text(
+                                      'Horarios',
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 20,
                                         fontWeight: FontWeight.w800,
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'SpiderMan',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'Interstelar',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'SpiderMan',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'Interstelar',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
+                                    GestureDetector(
+                                      onTap: () {
+                                        _con.addHorario();
+                                      },
+                                      child: Container(
+                                        width: 35,
+                                        height: 35,
+                                        decoration: BoxDecoration(
+                                          color: Colors.black,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: const Icon(
+                                          Icons.add,
+                                          size: 20,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      'Sala',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'Sala 1',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'Sala 1',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'Sala 1',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'Sala 1',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      'Horario',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      '11:00AM - 1:20PM',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      '1:30PM - 3:50PM',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      '4:00PM - 6:20PM',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      '6:30PM - 8:50PM',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
+                                const SizedBox(height: 10),
+                                Container(
+                                  width: double.infinity,
+                                  height: SizeConfig.screenHeight * 0.73,
+                                  padding:
+                                      const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                                  child: FutureBuilder(
+                                    future: _con.horarioGetAll(),
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasData) {
+                                        return ListView.builder(
+                                          itemCount: snapshot.data?.length ?? 0,
+                                          itemBuilder: (context, index) {
+                                            return horario(
+                                              snapshot.data![index]['id'],
+                                              snapshot.data![index]['pelicula'],
+                                              snapshot.data![index]['horarioE'],
+                                              snapshot.data![index]['horarioT'],
+                                              snapshot.data![index]['sala'],
+                                            );
+                                          },
+                                        );
+                                      } else {
+                                        return const Center(
+                                          child: CircularProgressIndicator(),
+                                        );
+                                      }
+                                    },
+                                  ),
                                 ),
                               ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                  );
+                      ));
                 },
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget horario(
+    String id,
+    String pelicula,
+    String horarioE,
+    String horarioT,
+    String sala,
+  ) {
+    return Container(
+      width: double.infinity,
+      height: 100,
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: Colors.white,
+          width: 1,
+          style: BorderStyle.solid,
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                pelicula,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              Text(
+                'Horario: $horarioE - $horarioT',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              Text(
+                'Sala: $sala',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
+          GestureDetector(
+            onTap: () {
+              _con.deleteHorario(id);
+            },
+            child: const Icon(
+              Icons.delete,
+              color: Colors.white,
             ),
           ),
         ],

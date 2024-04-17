@@ -1,21 +1,21 @@
 // ignore_for_file: empty_catches
-
-import 'package:cinesmaracaibo/models/usuarios/peliculas.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class PeliculaProvider {
+import '../usuarios/horario.dart';
+
+class HorarioProvider {
   late CollectionReference _ref;
 
-  PeliculaProvider() {
-    _ref = FirebaseFirestore.instance.collection('peliculas');
+  HorarioProvider() {
+    _ref = FirebaseFirestore.instance.collection('horario');
   }
 
-  Future<String?> create(Peliculas pelicula) async {
+  Future<String?> create(Horario horario) async {
     try {
       String id = _ref.doc().id;
-      pelicula.id = id;
+      horario.id = id;
 
-      await _ref.doc(pelicula.id).set(pelicula.toJson());
+      await _ref.doc(horario.id).set(horario.toJson());
       return id;
     } catch (error) {}
     return null;
@@ -25,13 +25,13 @@ class PeliculaProvider {
     return _ref.doc(id).snapshots(includeMetadataChanges: true);
   }
 
-  Future<Peliculas?> getById(String id) async {
+  Future<Horario?> getById(String id) async {
     DocumentSnapshot document = await _ref.doc(id).get();
 
     if (document.exists) {
-      Peliculas pelicula =
-          Peliculas.fromJson(document.data() as Map<String, dynamic>);
-      return pelicula;
+      Horario horario =
+          Horario.fromJson(document.data() as Map<String, dynamic>);
+      return horario;
     }
     return null;
   }

@@ -63,6 +63,8 @@ class _EmpleadoEditPageState extends State<EmpleadoEditPage> {
               const SizedBox(height: 15),
               buildNombreFormField(),
               const SizedBox(height: 15),
+              buildApellidoFormField(),
+              const SizedBox(height: 15),
               buildCedulaFormField(),
               const SizedBox(height: 15),
               buildCorreoFormField(),
@@ -141,7 +143,7 @@ class _EmpleadoEditPageState extends State<EmpleadoEditPage> {
                     backgroundColor: Colors.grey[600],
                   ),
                   onPressed: () {
-                    _con.update(_con.idWorker);
+                    _con.update(_con.idTrabajador);
                   },
                   child: const Text(
                     'Si',
@@ -178,15 +180,38 @@ class _EmpleadoEditPageState extends State<EmpleadoEditPage> {
 
   TextFormField buildNombreFormField() {
     return TextFormField(
-      // enabled: false,
+      controller: _con.nombreController,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        labelText: "Nombre Completo",
+        labelText: "Nombre",
         labelStyle: const TextStyle(
           fontSize: 13,
           color: Colors.white,
         ),
-        hintText: "   ${_con.worker?.nombre} ${_con.worker?.apellido}",
+        hintText: "   ${_con.trabajador?.nombre} ${_con.trabajador?.apellido}",
+        hintStyle: const TextStyle(
+          fontSize: 13,
+          color: Colors.white,
+        ),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
+      style: const TextStyle(
+        color: Colors.white,
+      ),
+    );
+  }
+
+  TextFormField buildApellidoFormField() {
+    return TextFormField(
+      controller: _con.apellidoController,
+      keyboardType: TextInputType.name,
+      decoration: InputDecoration(
+        labelText: "Apellido",
+        labelStyle: const TextStyle(
+          fontSize: 13,
+          color: Colors.white,
+        ),
+        hintText: "   ${_con.trabajador?.nombre} ${_con.trabajador?.apellido}",
         hintStyle: const TextStyle(
           fontSize: 13,
           color: Colors.white,
@@ -201,7 +226,7 @@ class _EmpleadoEditPageState extends State<EmpleadoEditPage> {
 
   TextFormField buildCedulaFormField() {
     return TextFormField(
-      // enabled: false,
+      controller: _con.cedulaController,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         labelText: "Cedula",
@@ -209,7 +234,7 @@ class _EmpleadoEditPageState extends State<EmpleadoEditPage> {
           fontSize: 13,
           color: Colors.white,
         ),
-        hintText: "   ${_con.worker?.ci}",
+        hintText: "   ${_con.trabajador?.ci}",
         hintStyle: const TextStyle(
           fontSize: 13,
           color: Colors.white,
@@ -224,7 +249,7 @@ class _EmpleadoEditPageState extends State<EmpleadoEditPage> {
 
   TextFormField buildCorreoFormField() {
     return TextFormField(
-      // enabled: false,
+      controller: _con.correoController,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         labelText: "Correo Electronico",
@@ -232,7 +257,7 @@ class _EmpleadoEditPageState extends State<EmpleadoEditPage> {
           fontSize: 13,
           color: Colors.white,
         ),
-        hintText: "   ${_con.worker?.correo}",
+        hintText: "   ${_con.trabajador?.correo}",
         hintStyle: const TextStyle(
           fontSize: 13,
           color: Colors.white,
